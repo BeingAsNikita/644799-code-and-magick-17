@@ -29,27 +29,26 @@ var getBarColor = function(name) {
 }
 
 var renderSingleBar = function(ctx, name, time, index, times) {
-  var maxTime = Math.floor(getMaxElement(times));
 
   ctx.fillStyle = '#000';
-  ctx.fillText(Math.floor(time), CLOUD_X + (BAR_WIDTH + GAP) * index, CLOUD_Y - FONT_GAP * 2 - ((barHeight * Math.floor(time))/maxTime));
+  ctx.fillText(Math.floor(time), CLOUD_X + (BAR_WIDTH + GAP) * index, CLOUD_Y - FONT_GAP * 2 - ((barHeight * Math.floor(time))/times));
   ctx.fillText(name, CLOUD_X + (BAR_WIDTH + GAP) * index, CLOUD_Y + FONT_GAP);
   ctx.fillStyle = getBarColor(name);
-  ctx.fillRect(CLOUD_X + (BAR_WIDTH + GAP) * index, CLOUD_Y - FONT_GAP, BAR_WIDTH, -((barHeight * time)/maxTime));
+  ctx.fillRect(CLOUD_X + (BAR_WIDTH + GAP) * index, CLOUD_Y - FONT_GAP, BAR_WIDTH, -((barHeight * time)/times));
 }
 
 window.renderStatistics = function(ctx, names, times) {
   renderCloud(ctx, 110, 20, 'rgba(0,0,0, 0.7)');
   renderCloud(ctx, 100, 10, '#fff');
+  var maxTime = Math.floor(getMaxElement(times));
 
   ctx.font = '16px PT Mono'
   ctx.fillStyle = '#000';
   ctx.fillText('Ура вы победили!', 125, 40);
   ctx.fillText('Список результатов:', 125, 60);
 
-
   for (var i = 0; i < names.length; i++) {
-    renderSingleBar(ctx, names[i], times[i], i, times );
+    renderSingleBar(ctx, names[i], times[i], i, maxTime );
   }
 };
 
