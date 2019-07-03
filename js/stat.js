@@ -24,8 +24,8 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
-var getBarColor = function(name) {
-  return (name === 'Вы') ? 'rgba(245, 0, 0, 1)' : 'rgba(8, 127, 207, ' + Math.random() + ')';
+var getBarColor = function(playerName) {
+  return (playerName === 'Вы') ? 'rgba(245, 0, 0, 1)' : 'rgba(8, 127, 207, ' + Math.random() + ')';
 }
 
 var renderSingleBar = function(ctx, name, time, index, times) {
