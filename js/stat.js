@@ -28,13 +28,13 @@ var getBarColor = function(playerName) {
   return (playerName === 'Вы') ? 'rgba(245, 0, 0, 1)' : 'rgba(8, 127, 207, ' + Math.random() + ')';
 }
 
-var renderSingleBar = function(ctx, name, time, index, times) {
+var renderSingleBar = function(ctx, name, time, index, max) {
 
   ctx.fillStyle = '#000';
-  ctx.fillText(Math.floor(time), CLOUD_X + (BAR_WIDTH + GAP) * index, CLOUD_Y - FONT_GAP * 2 - ((barHeight * Math.floor(time))/times));
+  ctx.fillText(Math.floor(time), CLOUD_X + (BAR_WIDTH + GAP) * index, CLOUD_Y - FONT_GAP * 2 - ((barHeight * Math.floor(time))/max));
   ctx.fillText(name, CLOUD_X + (BAR_WIDTH + GAP) * index, CLOUD_Y + FONT_GAP);
   ctx.fillStyle = getBarColor(name);
-  ctx.fillRect(CLOUD_X + (BAR_WIDTH + GAP) * index, CLOUD_Y - FONT_GAP, BAR_WIDTH, -((barHeight * time)/times));
+  ctx.fillRect(CLOUD_X + (BAR_WIDTH + GAP) * index, CLOUD_Y - FONT_GAP, BAR_WIDTH, -((barHeight * time)/max));
 }
 
 window.renderStatistics = function(ctx, names, times) {

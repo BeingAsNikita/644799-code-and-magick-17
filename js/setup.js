@@ -9,7 +9,6 @@ var eyesColors = ['black','red','blue','yellow','green']
 
 var similarListElement = setup.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-var fragment = document.createDocumentFragment();
 
 var getName = function(firstWord, secondWord) {
   return firstWord[Math.ceil(Math.random()*(firstWord.length-1))] + ' ' + secondWord[Math.ceil(Math.random()*(secondWord.length-1))];
@@ -42,6 +41,7 @@ var renderWizard = function (wizard) {
 }
 
 var renderWizards = function(count) {
+  var fragment = document.createDocumentFragment();
   var wizards = getWizardsArray(count);
 
   for (var i = 0; i < wizards.length; i++) {
