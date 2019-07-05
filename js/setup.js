@@ -69,7 +69,7 @@ var renderWizards = function(count) {
 
   for (var i = 0; i < wizards.length; i++) {
       fragment.appendChild(renderWizard(wizards[i]));
-  };
+  }
 
   similarListElement.appendChild(fragment);
 
