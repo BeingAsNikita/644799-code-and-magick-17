@@ -1,7 +1,12 @@
 'use strict';
-var setup = document.querySelector('.setup');
-var dialogHandler = setup.querySelector('.upload');
+(function() {
 
+var dialogHandler = window.setup.querySelector('.upload');
+var dialogCoords = {
+  x: 50,
+  y: 80
+};
+window.dialogCoords = dialogCoords;
 
 dialogHandler.addEventListener('mousedown', function (evt) {
   evt.preventDefault();
@@ -10,6 +15,7 @@ dialogHandler.addEventListener('mousedown', function (evt) {
     x: evt.clientX,
     y: evt.clientY
   };
+
 
   var dragged = false;
 
@@ -24,11 +30,30 @@ dialogHandler.addEventListener('mousedown', function (evt) {
 
     startCoords = {
       x: moveEvt.clientX,
-      y: moveEvt.clientY
+      y: moveEvt.clien
     };
 
-    setup.style.top = (setup.offsetTop - shift.y) + 'px';
-    setup.style.left = (setup.offsetLeft - shift.x) + 'px';
+    var dialogCoordsTop = window.setup.offsetTop - shift.y;
+    var dialogCoordsLeft = window.setup.offsetLeft - shift.x;
+
+    if (dialogCoordsTop < window.setup.offsetParent.offsetTop) {
+      dialogCoordsTop = window.setup.offsetParent.offsetTop;
+    }
+
+    if (dialogCoordsTop > window.setup.offsetParent.offsetHeight) {
+      dialogCoordsTop = window.setup.offsetParent.offsetHeight;
+    }
+
+    if (dialogCoordsLeft < window.setup.offsetParent.offsetLeft + window.setup.offsetWidth/2) {
+      dialogCoordsLeft = window.setup.offsetParent.offsetLeft + window.setup.offsetWidth/2;
+    }
+
+    if (dialogCoordsLeft > window.setup.offsetParent.offsetWidth - window.setup.offsetWidth/2) {
+      dialogCoordsLeft = window.setup.offsetParent.offsetWidth - window.setup.offsetWidth/2;
+    }
+
+    window.setup.style.top = dialogCoordsTop + 'px';
+    window.setup.style.left = dialogCoordsLeft + 'px';
   };
 
   var onMouseUp = function (upEvt) {
@@ -49,5 +74,4 @@ dialogHandler.addEventListener('mousedown', function (evt) {
   document.addEventListener('mousemove', onMouseMove);
   document.addEventListener('mouseup', onMouseUp);
 });
-
-
+})();

@@ -1,4 +1,5 @@
 'use strict';
+(function () {
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGTH = 270;
 var CLOUD_X = 130;
@@ -51,5 +52,5 @@ window.renderStatistics = function(ctx, names, times) {
     renderSingleBar(ctx, names[i], times[i], i, maxTime );
   }
 };
-
+})();
 

@@ -1,8 +1,11 @@
 'use strict';
 
+(function() {
+
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 var setup = document.querySelector('.setup');
+    window.setup = setup;
 var WIZARD_QUANTITY = 4;
 var names = ['Иван','Хуан Себастьян','Мария','Кристоф','Виктор','Юлия','Люпита','Вашингтон'];
 var secondNames = ['да Марья','Верон','Мирабелла','Вальц','Онопко','Топольницкая','Нионго','Ирвинг'];
@@ -76,16 +79,10 @@ var renderWizards = function(count) {
   setup.querySelector('.setup-similar').classList.remove('hidden');
 };
 
-
-var dialogCoords = {
-  x: 50,
-  y: 80
-};
-
 var resetShift = function() {
     if (setup.classList.contains('hidden')) {
-      setup.style.top = dialogCoords.y + 'px';
-      setup.style.left = dialogCoords.x + '%';
+      setup.style.top = window.dialogCoords.y + 'px';
+      setup.style.left = window.dialogCoords.x + '%';
     }
 };
 
@@ -143,5 +140,5 @@ setupSubmit.addEventListener('click', function() {
 });
 
 renderWizards(WIZARD_QUANTITY);
-
+})();
 
