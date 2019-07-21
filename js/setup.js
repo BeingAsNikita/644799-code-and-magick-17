@@ -5,7 +5,6 @@
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 var setup = document.querySelector('.setup');
-    window.setup = setup;
 var WIZARD_QUANTITY = 4;
 var names = ['Иван','Хуан Себастьян','Мария','Кристоф','Виктор','Юлия','Люпита','Вашингтон'];
 var secondNames = ['да Марья','Верон','Мирабелла','Вальц','Онопко','Топольницкая','Нионго','Ирвинг'];

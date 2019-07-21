@@ -1,12 +1,12 @@
 'use strict';
 (function() {
 
-var dialogHandler = window.setup.querySelector('.upload');
+var setup = document.querySelector('.setup');
+var dialogHandler = setup.querySelector('.upload');
 var dialogCoords = {
   x: 50,
   y: 80
 };
-window.dialogCoords = dialogCoords;
 
 dialogHandler.addEventListener('mousedown', function (evt) {
   evt.preventDefault();
@@ -30,30 +30,30 @@ dialogHandler.addEventListener('mousedown', function (evt) {
 
     startCoords = {
       x: moveEvt.clientX,
-      y: moveEvt.clien
+      y: moveEvt.clientY
     };
 
-    var dialogCoordsTop = window.setup.offsetTop - shift.y;
-    var dialogCoordsLeft = window.setup.offsetLeft - shift.x;
+    var dialogCoordsTop = setup.offsetTop - shift.y;
+    var dialogCoordsLeft = setup.offsetLeft - shift.x;
 
-    if (dialogCoordsTop < window.setup.offsetParent.offsetTop) {
-      dialogCoordsTop = window.setup.offsetParent.offsetTop;
+    if (dialogCoordsTop < setup.offsetParent.offsetTop) {
+      dialogCoordsTop = setup.offsetParent.offsetTop;
     }
 
-    if (dialogCoordsTop > window.setup.offsetParent.offsetHeight) {
-      dialogCoordsTop = window.setup.offsetParent.offsetHeight;
+    if (dialogCoordsTop > setup.offsetParent.offsetHeight) {
+      dialogCoordsTop = setup.offsetParent.offsetHeight;
     }
 
-    if (dialogCoordsLeft < window.setup.offsetParent.offsetLeft + window.setup.offsetWidth/2) {
-      dialogCoordsLeft = window.setup.offsetParent.offsetLeft + window.setup.offsetWidth/2;
+    if (dialogCoordsLeft < setup.offsetParent.offsetLeft + setup.offsetWidth/2) {
+      dialogCoordsLeft = setup.offsetParent.offsetLeft + setup.offsetWidth/2;
     }
 
-    if (dialogCoordsLeft > window.setup.offsetParent.offsetWidth - window.setup.offsetWidth/2) {
-      dialogCoordsLeft = window.setup.offsetParent.offsetWidth - window.setup.offsetWidth/2;
+    if (dialogCoordsLeft > setup.offsetParent.offsetWidth - setup.offsetWidth/2) {
+      dialogCoordsLeft = setup.offsetParent.offsetWidth - setup.offsetWidth/2;
     }
 
-    window.setup.style.top = dialogCoordsTop + 'px';
-    window.setup.style.left = dialogCoordsLeft + 'px';
+    setup.style.top = dialogCoordsTop + 'px';
+    setup.style.left = dialogCoordsLeft + 'px';
   };
 
   var onMouseUp = function (upEvt) {
