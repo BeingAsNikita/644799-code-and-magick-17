@@ -8,6 +8,7 @@ var dialogCoords = {
   y: 80
 };
 
+
 dialogHandler.addEventListener('mousedown', function (evt) {
   evt.preventDefault();
 
@@ -74,4 +75,6 @@ dialogHandler.addEventListener('mousedown', function (evt) {
   document.addEventListener('mousemove', onMouseMove);
   document.addEventListener('mouseup', onMouseUp);
 });
+
+window.dialogCoords = dialogCoords;
 })();
