@@ -1,5 +1,7 @@
 'use strict';
 
+(function() {
+
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 var setup = document.querySelector('.setup');
@@ -76,19 +78,6 @@ var renderWizards = function(count) {
   setup.querySelector('.setup-similar').classList.remove('hidden');
 };
 
-
-var dialogCoords = {
-  x: 50,
-  y: 80
-};
-
-var resetShift = function() {
-    if (setup.classList.contains('hidden')) {
-      setup.style.top = dialogCoords.y + 'px';
-      setup.style.left = dialogCoords.x + '%';
-    }
-};
-
 var openSetup = function() {
   setup.classList.remove('hidden');
   document.addEventListener('keydown', onSetupEscPress);
@@ -103,6 +92,13 @@ var onSetupEscPress = function(evt) {
   if (evt.keyCode === ESC_KEYCODE && document.activeElement !== userName) {
     closeSetup();
   }
+};
+
+var resetShift = function() {
+    if (setup.classList.contains('hidden')) {
+      setup.style.top = window.dialogCoords.y + 'px';
+      setup.style.left = window.dialogCoords.x + '%';
+    }
 };
 
 setupOpen.addEventListener('click', function() {
@@ -143,5 +139,5 @@ setupSubmit.addEventListener('click', function() {
 });
 
 renderWizards(WIZARD_QUANTITY);
-
+})();
 
